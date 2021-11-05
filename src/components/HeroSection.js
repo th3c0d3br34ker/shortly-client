@@ -13,7 +13,7 @@ const HeroSection = () => {
             <h1 className="max-w-lg mb-2 text-center lg:text-left text-5xl font-bold leading-tight">
               More than just shorter links
             </h1>
-            <p className="max-w-md mb-6 text-center lg:text-left text-purple-400">
+            <p className="max-w-md mb-6 text-center lg:text-left text-black-400">
               Build your brand’s recognition and get detailed insights on how
               your links are performing.
             </p>

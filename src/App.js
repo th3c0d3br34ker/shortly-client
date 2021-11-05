@@ -8,6 +8,7 @@ import BoostSection from "./components/BoostSection";
 import Footer from "./components/Footer";
 
 import "./styles/app.css";
+import "./styles/index.css";
 
 function App() {
   return (

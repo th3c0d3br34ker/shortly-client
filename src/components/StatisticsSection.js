@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import statsList from '../stats.js';
+import statsList from "../stats.js";
 
 const StatisticsSection = () => {
   return (
@@ -17,7 +17,7 @@ const StatisticsSection = () => {
             </h3>
           </div>
           <div className="grid grid-cols-1 gap-12 lg:gap-6 lg:grid-cols-3 cards-wrap">
-            {statsList.map((stat, index) => (
+            {statsList.map((stat) => (
               <div
                 className="relative z-10 p-8 pt-16 bg-white rounded-md shadow card"
                 key={stat.id}
@@ -26,7 +26,7 @@ const StatisticsSection = () => {
                   <img src={stat.icon} alt="" />
                 </div>
                 <h3 className="mb-4 font-bold">{stat.title}</h3>
-                <p className="text-purple-400">{stat.subtitle}</p>
+                <p className="text-black-400">{stat.subtitle}</p>
               </div>
             ))}
           </div>

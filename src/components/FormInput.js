@@ -58,11 +58,11 @@ const FormInput = () => {
               />
               {error && (
                 <p className="absolute text-red-500 error-msg">
-                  Please add a link
+                  Please add a link.
                 </p>
               )}
             </div>
-            <button className="px-4 py-3 text-xl font-bold text-white transition duration-300 ease-in-out bg-light-blue-400 rounded-md w-full md:w-1/4 h-14 lg:px-5 lg:ml-4 hover:bg-light-blue-600">
+            <button className="px-4 py-3 text-xl font-bold text-white transition duration-300 ease-in-out bg-blue-400 rounded-md w-full md:w-1/4 h-14 lg:px-5 lg:ml-4 hover:bg-blue-600">
               Shorten It!
             </button>
           </form>
