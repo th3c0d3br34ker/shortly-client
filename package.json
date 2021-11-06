@@ -2,6 +2,7 @@
   "name": "shortly-client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shortly-client.netlify.app",
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "axios": "^0.24.0",
