@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-import UrlItem from "./UrlItem";
-import { createShortUrl } from "../api/url";
 import { fetchUrls } from "../utils";
+import { createShortUrl } from "../api/url";
+
+// project imports
+import UrlItem from "./UrlItem";
+import { Spinner } from "./Icons";
 
 const FormInput = () => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
+  const refresh = () => {
     fetchUrls({ onSuccess: setResults, onError: setError });
+  };
+
+  useEffect(() => {
+    refresh();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeHandler = (e) => {
@@ -19,21 +29,24 @@ const FormInput = () => {
 
   const formHandler = async (evt) => {
     evt.preventDefault();
+    setLoading(true);
 
     if (url === "") {
-      setError(true);
+      setError("Please add a link.");
+      setLoading(false);
     } else {
       setError(false);
 
       const response = await createShortUrl({ long_url: url });
 
       if (response.error) {
-        setError(true);
+        setError(response.error);
       } else {
         setResults([...results, response]);
         setUrl("");
       }
 
+      setLoading(false);
       setUrl("");
     }
   };
@@ -44,7 +57,7 @@ const FormInput = () => {
         <div className="container py-4 mx-auto max-w-screen-dt">
           <form
             onSubmit={(e) => formHandler(e)}
-            className="w-full px-5 lg:px-10 py-6 lg:py-12 text-sm bg-purple-600 bg-center
+            className="w-full px-5 lg:px-10 py-6 lg:py-12 text-sm bg-indigo-600 bg-center
             bg-cover rounded-lg lg:flex lg:justify-between lg:items-center"
           >
             <div className="w-full relative flex flex-col mb-8 lg:mb-0 ">
@@ -52,24 +65,31 @@ const FormInput = () => {
                 type="text"
                 placeholder="Shorten a link here..."
                 value={url}
-                onChange={(e) => changeHandler(e)}
+                onChange={changeHandler}
                 className={`w-full p-3 border-2 rounded-md h-14 
                 ${error ? "border-red-500" : "border-gray-300"}`}
               />
               {error && (
-                <p className="absolute text-red-500 error-msg">
-                  Please add a link.
-                </p>
+                <p className="absolute text-red-500 error-msg">{error}</p>
               )}
             </div>
-            <button className="px-4 py-3 text-xl font-bold text-white transition duration-300 ease-in-out bg-blue-400 rounded-md w-full md:w-1/4 h-14 lg:px-5 lg:ml-4 hover:bg-blue-600">
-              Shorten It!
+            <button
+              className={`px-4 py-2 text-xl md:mt-0 md:ml-4 rounded-xl border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:border-blue-700 active:bg-blue-700 transition h-14 lg:px-5 lg:ml-4 ease-in-out duration-150
+            ${loading && "inline-flex items-center justify-items-center"}`}
+              disabled={loading}
+            >
+              {loading && <Spinner />}
+              Shorten!
             </button>
           </form>
           {results?.length === 0 ? null : (
             <div className="shorten__results">
               {results?.map((result, idx) => (
-                <UrlItem result={result} key={result.id + idx} />
+                <UrlItem
+                  result={result}
+                  key={result.id + idx}
+                  refresh={refresh}
+                />
               ))}
             </div>
           )}

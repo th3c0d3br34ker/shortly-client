@@ -1,11 +1,14 @@
 import React from "react";
 
+// project imports
+import { Settings } from "./Icons";
+
 const Header = () => {
   const toggleMenu = (e) => {
-    console.log("click");
     e.currentTarget.classList.toggle("open");
     document.querySelector("nav").classList.toggle("opened");
   };
+
   return (
     <>
       <header className="header container p-8 lg:py-12 flex items-center mx-auto max-w-screen-dt">
@@ -32,18 +35,18 @@ const Header = () => {
         <nav className="hidden items-center md:flex ml-8 w-full">
           <ul className="flex">
             <li className="nav-link">
-              <a href="/">Features</a>
-            </li>
-            <li className="nav-link">
-              <a href="/">Resources</a>
-            </li>
-            <li className="nav-link">
-              <a href="/">Prices</a>
+              <a href="/docs" className="nav-link header__link">
+                Docs
+              </a>
             </li>
           </ul>
           <div className="ml-auto hidden md:flex flex-grow-0 items-center">
-            <a href="/docs" className="nav-link header__link">
-              Docs
+            <a
+              href="/manage"
+              className="header__link inline-flex items-center rounded-xl bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded hover:text-white"
+            >
+              <Settings />
+              Manage Links
             </a>
           </div>
         </nav>
