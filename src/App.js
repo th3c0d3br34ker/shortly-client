@@ -1,5 +1,6 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Loading from "./components/Loading";
 
 import "./styles/index.css";
 
@@ -15,11 +16,13 @@ const ReRoute = lazy(() =>
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path=":id" element={<ReRoute />} />
-        <Route path="manage" element={<Manage />} />
-      </Routes>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path=":id" element={<ReRoute />} />
+          <Route path="manage" element={<Manage />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };
