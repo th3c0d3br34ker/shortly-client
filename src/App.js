@@ -1,25 +1,23 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
-import FormInput from "./components/FormInput";
-import StatisticsSection from "./components/StatisticsSection";
-import BoostSection from "./components/BoostSection";
-import Footer from "./components/Footer";
+// project imports
+import Home from "./pages/Home";
+import Manage from "./pages/Manage";
+import ReRoute from "./pages/ReRoute";
 
 import "./styles/index.css";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Header />
-      <HeroSection />
-      <FormInput />
-      <StatisticsSection />
-      <BoostSection />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path=":id" element={<ReRoute />} />
+        <Route path="manage" element={<Manage />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

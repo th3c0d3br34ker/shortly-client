@@ -1,12 +1,16 @@
 import { logger } from "../utils";
 import instance from "../utils/axios";
+import { HOST_URI } from "../utils/config";
 
 export const createShortUrl = async (data) => {
   try {
-    const response = await instance.post("/api/new", data);
+    const response = await instance.post("/api/new", {
+      ...data,
+      original_url: HOST_URI,
+    });
 
     if (response.data.success) {
-      return { ...response.data.data };
+      return { ...response.data };
     } else {
       return { error: response.data.message };
     }
@@ -19,17 +23,19 @@ export const createShortUrl = async (data) => {
 
 export const getShortUrl = async (id) => {
   try {
-    const response = await instance.get(`/api/url/${id}`);
+    const response = await instance.get(`/api/${id}`);
 
     if (response.data.success) {
-      return { ...response.data.data };
+      return { ...response.data };
     } else {
-      return { error: response.data.message };
+      return {
+        error: { message: response.data.message, statusCode: response.status },
+      };
     }
   } catch (error) {
     logger("Failed to get Short URL.");
     logger(error);
-    return { error: error.message };
+    return { error: { message: error.message } };
   }
 };
 

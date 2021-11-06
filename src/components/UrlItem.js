@@ -19,7 +19,7 @@ const UrlItem = ({ result, refresh }) => {
   const handleDelete = async () => {
     setLoading(true);
     await deleteShortUrl(id);
-    await refresh();
+    if (refresh) await refresh();
     setLoading(false);
   };
 

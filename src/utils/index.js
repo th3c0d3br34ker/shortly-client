@@ -1,5 +1,8 @@
 import { getAllShortUrls } from "../api/url";
 
+export * from "./config";
+export * from "./axios";
+
 export const logger = console.log;
 
 export const fetchUrls = async ({ onSuccess, onError }) => {
@@ -9,8 +12,6 @@ export const fetchUrls = async ({ onSuccess, onError }) => {
     onError(response.error);
     return;
   }
-
-  console.log(response.data);
 
   onSuccess(response.data);
 };

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import { fetchUrls } from "../utils";
 import { createShortUrl } from "../api/url";
 
 // project imports
@@ -11,17 +10,7 @@ const FormInput = () => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
-
-  const refresh = () => {
-    fetchUrls({ onSuccess: setResults, onError: setError });
-  };
-
-  useEffect(() => {
-    refresh();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [result, setResult] = useState(null);
 
   const changeHandler = (e) => {
     setUrl(e.target.value);
@@ -42,7 +31,7 @@ const FormInput = () => {
       if (response.error) {
         setError(response.error);
       } else {
-        setResults([...results, response]);
+        setResult(response.data);
         setUrl("");
       }
 
@@ -82,15 +71,13 @@ const FormInput = () => {
               Shorten!
             </button>
           </form>
-          {results?.length === 0 ? null : (
+          {result && (
             <div className="shorten__results">
-              {results?.map((result, idx) => (
-                <UrlItem
-                  result={result}
-                  key={result.id + idx}
-                  refresh={refresh}
-                />
-              ))}
+              <UrlItem
+                result={result}
+                key={result.id}
+                refresh={() => setResult(null)}
+              />
             </div>
           )}
         </div>
