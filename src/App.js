@@ -1,12 +1,16 @@
-import React from "react";
+import React, { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// project imports
-import Home from "./pages/Home";
-import Manage from "./pages/Manage";
-import ReRoute from "./pages/ReRoute";
-
 import "./styles/index.css";
+
+// project imports
+const Home = lazy(() => import(/* webpackChunkName: "Home" */ "./pages/Home"));
+const Manage = lazy(() =>
+  import(/* webpackChunkName: "Manage" */ "./pages/Manage")
+);
+const ReRoute = lazy(() =>
+  import(/* webpackChunkName: "ReRoute" */ "./pages/ReRoute")
+);
 
 const App = () => {
   return (
