@@ -86,7 +86,6 @@
 
 - [ReactJS](https://reactjs.org/docs/getting-started.html)
 - [Tailwind CSS](https://tailwindcss.com/docs)
-- []()
 
 <!-- GETTING STARTED -->
 
