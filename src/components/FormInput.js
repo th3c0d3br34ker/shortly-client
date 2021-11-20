@@ -42,7 +42,7 @@ const FormInput = () => {
 
   return (
     <>
-      <section className="relative px-8 -mb-24 form-input">
+      <section id="create" className="relative px-8 -mb-24 form-input">
         <div className="container py-4 mx-auto max-w-screen-dt">
           <form
             onSubmit={(e) => formHandler(e)}

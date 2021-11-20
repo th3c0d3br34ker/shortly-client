@@ -1,5 +1,5 @@
 import { logger } from "../utils";
-import instance from "../utils/axios";
+import instance from "../utils/axiosInstance";
 import { HOST_URI } from "../utils/config";
 
 export const createShortUrl = async (data) => {

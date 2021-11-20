@@ -1,7 +1,6 @@
 import { getAllShortUrls } from "../api/url";
 
 export * from "./config";
-export * from "./axios";
 
 export const logger = console.log;
 
