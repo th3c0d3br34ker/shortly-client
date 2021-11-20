@@ -10,16 +10,26 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.1",
+    "react-scripts": "^4.0.3",
     "react-use": "^17.3.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build"
+    "build": "craco build",
+    "precommit": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
       "react-app"
+    ]
+  },
+  "lint-staged": {
+    "**.js": [
+      "prettier --write src/**/*.js"
+    ],
+    "**.css": [
+      "prettier --write src/**/*.css"
     ]
   },
   "browserslist": {
@@ -36,6 +46,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.8",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.0.3",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
