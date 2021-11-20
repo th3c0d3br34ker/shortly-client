@@ -71,6 +71,7 @@
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contributing">Deployment</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -136,8 +137,6 @@ This is an example of how to list things you need to use the software and how to
    yarn start
    ```
 
-
-
 <!-- CONTRIBUTING -->
 
 ## Contributing
@@ -149,6 +148,14 @@ Contributions are what make the open source community such an amazing place to b
 3. Commit your Changes. (`git commit -m 'Add some new-feature'`)
 4. Push to the Branch. (`git push origin feature/new-feature`)
 5. Open a Pull Request.
+
+<!-- DEPLOYMENT -->
+
+## Deployment
+
+Make sure to add the following Environment Variables while creating the production build.
+   - `REACT_APP_API_URI` : Backend API Url. ( will default to `localhost:5000` )
+   - REACT_APP_HOST_URI : Url of this project which is hosted. ( will default to  `localhost:3000` )
 
 <!-- LICENSE -->
 
