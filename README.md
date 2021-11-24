@@ -155,7 +155,7 @@ Contributions are what make the open source community such an amazing place to b
 
 Make sure to add the following Environment Variables while creating the production build.
    - `REACT_APP_API_URI` : Backend API Url. ( will default to `localhost:5000` )
-   - REACT_APP_HOST_URI : Url of this project which is hosted. ( will default to  `localhost:3000` )
+   - `REACT_APP_HOST_URI` : Url of this project which is hosted. ( will default to  `localhost:3000` )
 
 <!-- LICENSE -->
 
