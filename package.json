@@ -15,12 +15,13 @@
     "web-vitals": "^1.1.2"
   },
   "engines": {
-    "node": ">=18.15.0",
-    "npm": ">=9.5.0"
+    "node": ">=16.20.0",
+    "npm": ">=8.19.4",
+    "yarn": ">=1.22.0"
   },
   "scripts": {
-    "start": "craco --openssl-legacy-provider start",
-    "build": "craco --openssl-legacy-provider build",
+    "start": "craco start",
+    "build": "craco build",
     "precommit": "lint-staged"
   },
   "eslintConfig": {
