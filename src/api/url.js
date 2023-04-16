@@ -1,12 +1,12 @@
-import { logger } from "../utils";
-import instance from "../utils/axiosInstance";
-import { HOST_URI } from "../utils/config";
+import { logger } from '../utils';
+import instance from '../utils/axiosInstance';
+import { HOST_URI } from '../utils/config';
 
 export const createShortUrl = async (data) => {
   try {
-    const response = await instance.post("/api/new", {
+    const response = await instance.post('/api/new', {
       ...data,
-      original_url: HOST_URI,
+      host_url: HOST_URI,
     });
 
     if (response.data.success) {
@@ -15,7 +15,7 @@ export const createShortUrl = async (data) => {
       return { error: response.data.message };
     }
   } catch (error) {
-    logger("Failed to create new Short URL.");
+    logger('Failed to create new Short URL.');
     logger(error);
     return { error: error.message };
   }
@@ -33,7 +33,7 @@ export const getShortUrl = async (id) => {
       };
     }
   } catch (error) {
-    logger("Failed to get Short URL.");
+    logger('Failed to get Short URL.');
     logger(error);
     return { error: { message: error.message } };
   }
@@ -41,7 +41,7 @@ export const getShortUrl = async (id) => {
 
 export const getAllShortUrls = async () => {
   try {
-    const response = await instance.get("/api/all");
+    const response = await instance.get('/api');
 
     if (response.data.success) {
       return { ...response.data };
@@ -49,7 +49,7 @@ export const getAllShortUrls = async () => {
       return { error: response.data.message };
     }
   } catch (error) {
-    logger("Failed to get all Short URLs.");
+    logger('Failed to get all Short URLs.');
     logger(error);
     return { error: error.message };
   }
@@ -65,7 +65,7 @@ export const deleteShortUrl = async (id) => {
       return { error: response.data.message };
     }
   } catch (error) {
-    logger("Failed to delete Short URL.");
+    logger('Failed to delete Short URL.');
     logger(error);
     return { error: error.message };
   }
